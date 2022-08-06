@@ -1,0 +1,33 @@
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <div>
+      <i class="fas fa-user-circle resgistroUser_icon"></i>
+    </div>
+    <!-- Login Form -->
+    <br>
+    <h1 class="form_usuario">Registro</h1>
+    <br>
+    <i class="fas fa-user-circle resgistroUser_icon"></i>
+    <form  onsubmit="">
+      <input type="text" id="name" (change)="sendNomb($event)" class="fadeIn second" placeholder="Nombre">
+      <input type="text" id="apellido" (change)="sendApell($event)" class="fadeIn third" placeholder="Apellidos">
+      <input type="text" id="email" (change)="sendEmail($event)" class="fadeIn second" placeholder="Correo electrónico">
+      <input type="password" id="password" (change)="sendPass($event)" class="fadeIn third" placeholder="Contraseña">
+      <input type="password" id="password" (change)="sendPassConfirm($event)" class="fadeIn third" placeholder="Confirmar Contraseña">
+
+      <br>
+      <br>
+    <div>
+      <button class="btn-lg btn-block">
+      <span  type="submit" (click)="sendDataUser()" class="text">Registrar</span>
+    </button>
+    </div>
+    <br>
+    <br>
+      <!-- <input type="submit" class="fadeIn fourth" (click)="sendDataUser()" value="Registrar"> -->
+    </form>
+
+
+  </div>
+</div>
+

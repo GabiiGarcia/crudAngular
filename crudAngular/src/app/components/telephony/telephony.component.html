@@ -1,0 +1,51 @@
+<section>
+  <div class="col mt-4 ">
+    <ul class="list-group">
+      <li
+        *ngFor="let telephony of telephonyArray"
+        class="list-group-item list-group-item-action" (click)="openEditTel(telephony)"
+        [class.active]="telephony == selectedTelephony">
+      <span class="badge badge-primery">{{ telephony.idTel}} </span>
+        {{telephony.nameTel}}
+        {{ telephony.priceTel}}
+        {{ telephony.descriptionTel }}
+      </li>
+    </ul>
+  </div>
+  <div class="card mt-4">
+    <div class="card-bady">
+      <div class="card-title">
+        hola
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section>
+  <form>
+    <div class="form-group">
+      <label  for="exampleFormControlInput1">Nombre</label>
+      <input name="name" type="text" class="form-control" [(ngModel)]="selectedTelephony.nameTel" placeholder="Nombre">
+    </div>
+    <div class="form-group">
+      <label for="exampleFormControlInput1">Precio</label>
+      <input name="numero" type="number" class="form-control" [(ngModel)]="selectedTelephony.priceTel" placeholder="Precio">
+    </div>
+
+
+
+    <div class="form-group">
+      <label for="exampleFormControlTextarea1">Descripción</label>
+      <textarea name="descripcion" class="form-control" [(ngModel)]="selectedTelephony.descriptionTel" rows="3"></textarea>
+    </div>
+  </form>
+  <div>
+    <button (click)="addOrEditTel()" class="btn btn-success">Enviar</button>
+    <button
+    *ngIf="selectedTelephony.idTel !== 0"
+    class="btn btn-danger"
+    (click)="deleteTel()"
+    >Eliminar</button>
+  </div>
+</section>

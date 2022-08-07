@@ -1,0 +1,119 @@
+<!-- Modal  -->
+<br />
+<br />
+<section>
+  <ng-template #contenido let-modal>
+    <div class="modal-header h-100" style="background-color: #0d6efd">
+      <h4 class="modal-title modaltitleh1">Productos</h4>
+      <button class="btn btn-danger" aria-label="close" type="button" (click)="modal.dismiss();">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form>
+        <div class="form-outline mb-4">
+          <input type="text" [(ngModel)]="selectedProducts.nombre" name="nombre" class="form-control"
+            placeholder="Nombre" autocomplete="off" />
+        </div>
+        <div class="form-outline mb-4">
+          <input type="number" min="1" [(ngModel)]="selectedProducts.precio" name="precio" class="form-control"
+            placeholder="Precio" />
+        </div>
+        <div class="form-outline mb-4">
+          <textarea class="form-control" [(ngModel)]="selectedProducts.descripcion" name="descripcion" rows="4"
+            placeholder="Descripción"></textarea>
+        </div>
+        <div class="form-outline mb-4">
+          <input (change)="capturarFile($event)" type="file" />
+        </div>
+        <div *ngIf="previsualizacion">
+          <img width="100px" [src]="previsualizacion" />
+        </div>
+        <div *ngIf="!previsualizacion">
+          <img width="100px" [src]="selectedProducts.imagen" />
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button (click)="funciontType(editar,contenido)" type="submit" class="btn btn btn-success">
+        {{ editar ? 'Actualizar' : 'Agregar' }}
+      </button>
+      <!-- <button type="button" class="" (click)="modal.close()">Ok!</button> -->
+    </div>
+  </ng-template>
+  <div class="container">
+
+    <div class="col-10 offset-1">
+      <div class="row">
+        <div class="col-12 col-md-6 col-lg-9">
+          <div class="input-group rounded">
+            <input class="form-control rounded" type="search" placeholder="Buscar…" autocomplete="off"
+              [(ngModel)]="nombreProd" (ngModelChange)="inputSearch($event)" />
+
+            <button type="button" class="btn btn-primary">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search"
+                viewBox="0 0 16 16">
+                <path
+                  d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+              </svg>
+            </button>
+          </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-3">
+          <button class="btn btn-primary" type="button" (click)="modalAdd(contenido)">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+              class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
+              <path
+                d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z" />
+            </svg>
+            Agregar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<br />
+<br />
+<br />
+
+<section>
+  <div class="col-10 offset-1">
+    <div class="row">
+      <div *ngFor="let products of productsArray, index as i" class="card producto_tarjeta col-sm-8 col-md-5 col-lg-3"
+        [class.active]="products == selectedProducts">
+        <div class="card-details">
+          <br />
+
+          <span class="badge bg-primary">{{ products.id }}</span>
+          <div align="center">
+            <img width="80%" src="{{ products.imagen }}" alt="" />
+          </div>
+
+          <p class="producto_text">
+            <b>{{ products.nombre }}</b>
+          </p>
+          <p class="producto_precio">
+            <b>{{ products.precio }}</b>
+          </p>
+          <p class="producto_text">
+            {{ products.descripcion }}
+          </p>
+        </div>
+        <div class="row">
+          <div class="col-6">
+            <button (click)="openForEdit(contenido, products)" class="btn btn-success card-button-edit">
+              Editar
+            </button>
+          </div>
+          <div class="col-6">
+            <button (click)="delete()" class="btn btn-danger card-button">
+              Eliminar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

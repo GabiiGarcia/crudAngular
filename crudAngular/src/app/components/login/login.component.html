@@ -1,0 +1,32 @@
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+     <br>
+    <!-- Icon -->
+    <div class="fadeIn first">
+      <img src="assets/img/login.png" width="200px" alt="User Icon" />
+    </div>
+    <br>
+    <!-- Login Form -->
+    <form>
+      <input type="text" id="login" (change)="senduser($event)" class="fadeIn second" placeholder="login">
+      <input type="password" id="password" (change)="sendPass($event)" class="fadeIn third" placeholder="password">
+      <br>
+      <br>
+      <div align="center">
+      <button>
+      <span  type="submit" (click)="sendData()" class="text">Iniciar sesión</span>
+    </button>
+    </div>
+      <!-- <input type="submit" class="fadeIn fourth" (click)="sendData()" value="Log In"> -->
+    </form>
+
+    <!-- Remind Passowrd -->
+    <div id="formFooter">
+      <p>¿No tienes cuenta?</p>
+      <a class="underlineHover" routerLinkActive="active" routerLink="/registro">Registrate aquí</a>
+    </div>
+
+  </div>
+</div>
+
